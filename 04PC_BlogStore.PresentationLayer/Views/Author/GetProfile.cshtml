@@ -1,0 +1,81 @@
+﻿@model AuthorEditViewModel
+@{
+    ViewData["Title"] = "GetProfile";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+<div class="body-wrapper-inner">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col-md-4 text-center">
+                        <h5 class="card-title fw-semibold mb-4">Profil Bilgileri</h5>
+                        <div class="card p-4">
+                            <img src="@Model.ImageUrl"
+                                 class="rounded-circle img-fluid mb-3 d-block mx-auto"
+                                 alt="Profil Fotoğrafı"
+                                 style="width: 150px; height: 150px; object-fit: cover;">
+                            <h5 class="card-title">@Model.Name @Model.Surname</h5>
+                            <p class="card-text">@Model.Email</p>
+                            <p class="card-text text-muted">@Model.Description</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <h5 class="card-title fw-semibold mb-4 text-center">Bilgileri Güncelle</h5>
+                        <div class="card p-4">
+                            <form method="post" asp-action="GetProfile">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Ad</label>
+                                        <input type="text" class="form-control" asp-for="Name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Soyad</label>
+                                        <input type="text" class="form-control" asp-for="Surname">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control" asp-for="Email">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Telefon</label>
+                                        <input type="text" class="form-control" asp-for="PhoneNumber">
+                                    </div>
+                                </div>                                
+
+                                <div class="mb-3">
+                                    <label class="form-label">Açıklama</label>
+                                    <textarea class="form-control" rows="4" asp-for="Description"></textarea>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label">Resim</label>
+                                    <input type="text" class="form-control" asp-for="ImageUrl">
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Şifre</label>
+                                        <input type="password" class="form-control" asp-for="Password">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Şifre Tekrar</label>
+                                        <input type="password" class="form-control" asp-for="ConfirmPassword">
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-primary">Güncelle</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div> <!-- row -->
+            </div>
+        </div>
+    </div>
+</div>

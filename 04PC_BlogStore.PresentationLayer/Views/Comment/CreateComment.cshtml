@@ -1,0 +1,19 @@
+﻿@model Comment
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br /> <br />
+    <form method="post">
+        <label>Yazar</label>
+        @* <input type="text" asp-for="AuthorNameSurname" class="form-control" /> *@
+        <br />        
+        <label>Yorum Detayı</label>
+        <input type="text" asp-for="CommentDetail" class="form-control" />
+        <br />        
+        <button class="btn btn-success">Ekle</button>
+    </form>
+</div>

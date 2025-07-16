@@ -1,0 +1,37 @@
+﻿@model Article
+@{
+    ViewData["Title"] = "CreateArticle";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+<div class="body-wrapper-inner">
+    <div class="container-fluid">
+        <div class="card">            
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4">Yeni Makale Oluştur</h5>
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="mb-3">
+                                <label>Başlık</label>
+                                <input type="text" asp-for="Title" class="form-control" />                               
+                            </div>      
+                            <div class="mb-3">
+                                <label>Görsel</label>
+                                <input type="text" asp-for="ImageUrl" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Kategori</label>
+                                @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
+                            </div>
+                            <div class="mb-3">
+                                <label>İçerik</label>
+                                <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                            </div>
+                            <button class="btn btn-primary">Oluştur</button>
+                        </form>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

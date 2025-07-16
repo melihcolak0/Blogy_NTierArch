@@ -1,0 +1,241 @@
+﻿@model DashboardInformationsViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<div class="body-wrapper-inner">
+    <div class="container-fluid">
+        <!--  Row 1 -->
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card w-100">
+                    <div class="card-body">
+                        <div class="d-md-flex align-items-center">
+                            <div>
+                                <h4 class="card-title">Aylara Göre Blogy'de Yayınlanan Makale Sayısı</h4>
+                                <p class="card-subtitle">
+                                     (Ay Bazında)
+                                </p>
+                            </div>
+                            <div class="ms-auto">
+                                <ul class="list-unstyled mb-0">
+                                    <li class="list-inline-item text-primary">
+                                        <span class="round-8 text-bg-primary rounded-circle me-1 d-inline-block"></span>
+                                        Ay
+                                    </li>
+                                    <li class="list-inline-item text-info">
+                                        <span class="round-8 text-bg-info rounded-circle me-1 d-inline-block"></span>
+                                        Makale Sayısı Admin
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <canvas id="sales-overview" height="200" style="max-height:300px; height:300px;"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card overflow-hidden">
+                    <div class="card-body pb-0">
+                        <div class="d-flex align-items-start">
+                            <div>
+                                <h4 class="card-title">İstatistiklerim</h4>
+                            </div>                           
+                        </div>
+                        <div class="mt-4 pb-3 d-flex align-items-center">
+                            <span class="btn btn-primary rounded-circle round-48 hstack justify-content-center">
+                                <i class="ti ti-article"></i>
+                            </span>
+                            <div class="ms-3">
+                                <h5 class="mb-0 fw-bolder fs-4">Makale Sayım</h5>
+                                <span class="text-muted fs-3">(Yazdığım Makale Sayısı)</span>
+                            </div>
+                            <div class="ms-auto">
+                                <span class="badge bg-secondary-subtle text-dark">@Model.myTotalArticlesCount</span>
+                            </div>
+                        </div>
+                        <div class="py-3 d-flex align-items-center">
+                            <span class="btn btn-warning rounded-circle round-48 hstack justify-content-center">
+                                <i class="ti ti-message-2"></i>
+                            </span>
+                            <div class="ms-3">
+                                <h5 class="mb-0 fw-bolder fs-4">Toplam Yorum Sayısı</h5>
+                                <span class="text-muted fs-3">(Makalelerime Gelen Yorum Sayısı)</span>
+                            </div>
+                            <div class="ms-auto">
+                                <span class="badge bg-secondary-subtle text-dark">@Model.myTotalCommentsCount</span>
+                            </div>
+                        </div>
+                        <div class="py-3 d-flex align-items-center">
+                            <span class="btn btn-success rounded-circle round-48 hstack justify-content-center">
+                                <i class="ti ti-users"></i>
+                            </span>
+                            <div class="ms-3">
+                                <h5 class="mb-0 fw-bolder fs-4">Toplam Üye Sayısı</h5>
+                                <span class="text-muted fs-3">(Blogy'deki Toplam Üye Sayısı)</span>
+                            </div>
+                            <div class="ms-auto">
+                                <span class="badge bg-secondary-subtle text-dark">@Model.totalMemberCount</span>
+                            </div>
+                        </div>
+                        <div class="pt-3 mb-7 d-flex align-items-center">
+                            <span class="btn btn-secondary rounded-circle round-48 hstack justify-content-center">
+                                <i class="ti ti-notes"></i>
+                            </span>
+                            <div class="ms-3">
+                                <h5 class="mb-0 fw-bolder fs-4">Toplam Makale Sayısı</h5>
+                                <span class="text-muted fs-3">(Blogy'deki Toplam Makale Sayısı)</span>
+                            </div>
+                            <div class="ms-auto">
+                                <span class="badge bg-secondary-subtle text-dark">@Model.totalArticleCount</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <!-- Card -->
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-0">Blogy'de Yayınlanan Son 5 Makale</h4>
+                    </div>
+                    <div class="comment-widgets mb-2 common-widget">
+                        <!-- Comment Row -->
+                        @foreach (var item in Model.Last5Articles)
+                        {
+                            <div class="d-flex flex-row comment-row border-bottom p-3 gap-3">
+                                <div>
+                                    <span>
+                                        <img src="@item.ImageUrl" width="200" height="120" class="rounded" />
+                                    </span>
+                                </div>
+                                <div class="comment-text w-100">
+                                    <h5 class="fw-medium">@item.Title</h5>
+                                    <p class="mb-1 fs-2 text-muted"><b>Yazar: @item.AppUser.Name @item.AppUser.Surname (Kategori: @item.Category.CategoryName)</b></p>
+                                    <p class="mb-1 fs-2 text-muted">@(!string.IsNullOrEmpty(item.Description) ? (item.Description.Length > 250 ? item.Description.Substring(0, 250) + "..." : item.Description) : "")</p>
+                                    <div class="comment-footer mt-2">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <span class="badge bg-success-subtle text-success">Aktif</span>
+                                            <a href="/Article/ArticleDetail/@item.Slug" class="btn btn-sm btn-outline-primary">Makaleye Git</a>
+                                        </div>
+                                        <span class="text-muted ms-auto fw-normal fs-2 d-block mt-2 text-end">@item.CreatedDate.ToString("MMM dd, yyyy")</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-md-flex align-items-center">
+                            <h4 class="card-title">Blogy'de Yapılan Son 5 Yorum</h4>
+                        </div>
+                        <div class="table-responsive mt-4">
+                            <table class="table mb-0 text-nowrap varient-table align-middle fs-3">
+                                <thead>
+                                    <tr>
+                                        <th>Makale & Yorum</th>
+                                        <th>Tarih</th>
+                                        <th class="text-end">İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Last5Comments)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-start">
+                                                    <img src="@item.AppUser.ImageUrl" class="rounded-circle me-3" width="40" height="40" alt="Profil">
+                                                    <div>
+                                                        <h6 class="fw-semibold mb-1">@item.Article.Title</h6>
+                                                        <span class="text-muted small d-block">
+                                                            <strong>@item.AppUser.Name @item.AppUser.Surname:</strong>
+                                                            @(!string.IsNullOrEmpty(item.CommentDetail)
+                                                                                                                    ? (item.CommentDetail.Length > 90
+                                                                                                                    ? item.CommentDetail.Substring(0, 90) + "..."
+                                                                                                                    : item.CommentDetail)
+                                                                                                                    : "")
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-muted small">@item.CommentDate.ToString("dd MMM yyyy")</td>
+                                        <td class="text-end">
+                                            <a href="/Article/ArticleDetail/@item.Article.Slug" class="btn btn-sm btn-outline-primary">
+                                                Makaleye Git
+                                            </a>
+                                        </td>
+                                    </tr>
+                                                                        }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>     
+        </div>
+    </div>
+</div>
+
+
+<script src="/flexy-bootstrap-lite-1.0.0/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="/flexy-bootstrap-lite-1.0.0/assets/js/dashboard.js"></script>
+
+<!-- Chart.js CDN (Eğer yoksa ekleyin) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('sales-overview').getContext('2d');
+
+    const salesChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [
+                'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+                'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'
+            ],
+            datasets: [{
+                label: 'Yüklenen Makale Sayısı',
+                data: [5, 8, 3, 10, 6, 4, 12, 9, 7, 11, 5, 6], // Rastgele sayılar
+                backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return ` ${context.parsed.y} Makale`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Makale Sayısı'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Aylar'
+                    }
+                }
+            }
+        }
+    });
+</script>

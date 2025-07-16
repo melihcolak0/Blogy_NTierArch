@@ -1,0 +1,63 @@
+﻿@model List<Comment>
+@{
+    ViewData["Title"] = "MyCommentsList";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<div class="body-wrapper-inner">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">                
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-md-flex align-items-center">
+                            <h4 class="card-title">Makalelerime Gelen Yorumlar</h4>
+                        </div>
+                        <div class="table-responsive mt-4">
+                            <table class="table mb-0 text-nowrap varient-table align-middle fs-3">
+                                <thead>
+                                    <tr>
+                                        <th>Makale & Yorum</th>
+                                        <th>Tarih</th>
+                                        <th class="text-end">İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-start">
+                                                    <img src="@item.AppUser.ImageUrl" class="rounded-circle me-3" width="40" height="40" alt="Profil">
+                                                    <div>
+                                                        <h6 class="fw-semibold mb-1">@item.Article.Title</h6>
+                                                        <span class="text-muted small d-block">
+                                                            <strong>@item.AppUser.Name @item.AppUser.Surname:</strong>
+                                                            @(!string.IsNullOrEmpty(item.CommentDetail)
+                                                                                                                    ? (item.CommentDetail.Length > 90
+                                                                                                                    ? item.CommentDetail.Substring(0, 90) + "..."
+                                                                                                                    : item.CommentDetail)
+                                                                                                                    : "")
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-muted small">@item.CommentDate.ToString("dd MMM yyyy")</td>
+                                        <td class="text-end">
+                                            <a href="/Article/ArticleDetail/@item.Article.Slug" class="btn btn-sm btn-outline-primary">
+                                                Makaleye Git
+                                            </a>
+                                        </td>
+                                    </tr>
+                                                                        }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

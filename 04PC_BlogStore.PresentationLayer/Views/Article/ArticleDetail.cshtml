@@ -1,0 +1,161 @@
+﻿@{
+    Layout = null;
+}
+
+<!-- /*
+* Template Name: Blogy
+* Template Author: Untree.co
+* Template URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+
+@await Component.InvokeAsync("_ArticleDetailHeadComponent")
+
+<body>
+
+    @await Component.InvokeAsync("_NavbarComponent")
+
+    @await Component.InvokeAsync("_ArticleDetailMainCoverImageComponent", new { id = ViewBag.ArticleId })
+
+    <section class="section">
+        <div class="container">
+
+            <div class="row blog-entries element-animate">
+
+                <div class="col-md-12 col-lg-8 main-content">
+
+                    @await Component.InvokeAsync("_ArticleDetailContentComponent", new { id = ViewBag.ArticleId })
+
+                    @await Component.InvokeAsync("_ArticleDetailArticleCategoryComponent", new { id = ViewBag.ArticleId })
+
+                    <div class="pt-5 comment-wrap">
+
+                        <div id="commentsSection">
+                            @await Component.InvokeAsync("_ArticleDetailCommentListComponent", new { id = ViewBag.ArticleId })
+                        </div>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="comment-form-wrap pt-5">
+                                <h3 class="mb-4">Bir yorum yap</h3>
+
+                                <div id="commentResult"></div>
+
+                                <form id="commentForm" class="p-4 bg-light">
+                                    <textarea id="commentContent"
+                                          name="Content"
+                                          class="form-control mb-3"
+                                          rows="4"
+                                          placeholder="Yorumunuz"
+                                          required></textarea>
+
+                                    <input type="hidden" id="articleId" value="@ViewBag.ArticleId" />
+
+                                    <button class="btn btn-primary" type="submit">Gönder</button>
+                                </form>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="comment-form-wrap pt-5">
+                                <form class="p-5 bg-light">
+                                    <div class="form-group">
+                                        <label>Yorum yapmak için öncelikle giriş yapmalısınız</label>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <a href="/LogIn/LogIn" class="btn btn-primary">GİRİŞ YAP</a>
+                                    </div>
+                                </form>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- END main-content -->
+
+                <div class="col-md-12 col-lg-4 sidebar">
+                    <div class="sidebar-box search-form-wrap">
+                        <form action="#" class="sidebar-search-form">
+                            <span class="bi-search"></span>
+                            <input type="text" class="form-control" id="s" placeholder="Bir kelime yaz ve Enter'a bas">
+                        </form>
+                    </div>
+                    <!-- END sidebar-box -->
+                    @await Component.InvokeAsync("_ArticleDetailAboutAuthorComponent", new { id = ViewBag.ArticleId })
+
+                    @await Component.InvokeAsync("_ArticleDetailPopularPostsComponent")
+
+                    @await Component.InvokeAsync("_ArticleDetailCategoryListComponent")
+
+                    <div class="sidebar-box">
+                        <h3 class="heading">Tag'ler</h3>
+                        <ul class="tags">
+                            <li><a href="#">Yapay Zeka</a></li>
+                            <li><a href="#">Yazılım</a></li>                            
+                        </ul>
+                    </div>
+                </div>
+                <!-- END sidebar -->
+
+            </div>
+        </div>
+    </section>
+
+    @await Component.InvokeAsync("_ArticleDetailFooterComponent")
+    @await Component.InvokeAsync("_ArticleDetailScriptComponent")
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(function () {
+
+        // Form submit
+        $('#commentForm').on('submit', function (e) {
+            e.preventDefault();
+
+            $.post('/Comment/Add',
+            {
+                articleId: $('#articleId').val(),
+                content:   $('#commentContent').val()
+            })
+            // .done(function () {
+            //     $('#commentContent').val('');
+            //     $('#commentResult').html(
+            //        '<div class="alert alert-success">Yorum eklendi.</div>');
+
+            //     // Yorum listesi güncelle
+            //     loadComments($('#articleId').val());
+            // })
+                .done(function (data) {
+        $('#commentContent').val('');
+        if (Object.values(data).some(score => score > 0.8)) {
+            let toxicHtml = '<div class="alert alert-danger"><strong>Yorumunuzda toksik bazı kelimeler tespit edildi! Yorumunuz adminler tarafından kontrol edilecektir.</strong><br>';
+            for (const [label, score] of Object.entries(data)) {
+                toxicHtml += `${label}: ${(score * 100).toFixed(2)}%<br>`;
+            }
+            toxicHtml += '</div>';
+            $('#commentResult').html(toxicHtml);
+        } else {
+            $('#commentResult').html(
+                '<div class="alert alert-success">Yorum eklendi.</div>');
+            loadComments($('#articleId').val());
+        }
+    })
+
+            .fail(function (xhr) {
+                $('#commentResult').html(
+                   `<div class="alert alert-danger">
+                     ${xhr.responseText || 'Yorum eklenemedi'}</div>`);
+            });
+        });
+
+        // Yorum listesini yenile
+        function loadComments(id) {
+            $('#commentsSection').load(`/Comment/List/${id}`);
+        }
+    });
+</script>

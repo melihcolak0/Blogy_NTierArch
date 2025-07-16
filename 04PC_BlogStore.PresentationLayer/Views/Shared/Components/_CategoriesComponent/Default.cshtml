@@ -1,0 +1,26 @@
+﻿@model List<Category>
+
+<section class="section bg-light">
+    <div class="container">
+        @{
+            var chunked = Model.Chunk(4);
+        }
+
+        @foreach (var group in chunked)
+        {
+            <div class="row align-items-stretch retro-layout mb-4">
+                @foreach (var item in group)
+                {
+                    <div class="col-md-3">
+                        <a href="/Default/ArticlesByCategory/@item.CategoryId" class="h-entry mb-30 v-height gradient">
+                            <div class="featured-img" style="background-image: url('@item.CategoryImageUrl');"></div>
+                            <div class="text">                                
+                                <h2>@item.CategoryName</h2>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>

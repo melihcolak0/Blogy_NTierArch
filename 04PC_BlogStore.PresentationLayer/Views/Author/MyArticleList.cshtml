@@ -1,0 +1,47 @@
+﻿@model List<Article>
+@{
+    ViewData["Title"] = "MyArticleList";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<div class="body-wrapper-inner">
+    <div class="container-fluid">
+        <!--  Row 1 -->
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Card -->
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-0">Makalelerim</h4>
+                    </div>
+                    <div class="comment-widgets mb-2 common-widget" >
+                        <!-- Comment Row -->
+                        @foreach (var item in Model)
+                        {
+                            <div class="d-flex flex-row comment-row border-bottom p-3 gap-3">
+                                <div>
+                                    <span>
+                                        <img src="@item.ImageUrl" width="200" height="120" class="rounded"/>
+                                    </span>
+                                </div>
+                                <div class="comment-text w-100">
+                                    <h5 class="fw-medium">@item.Title</h5>
+                                    <p class="mb-1 fs-2 text-muted"><b>Kategori: @item.Category.CategoryName</b></p>
+                                    <p class="mb-1 fs-2 text-muted">@(!string.IsNullOrEmpty(item.Description) ? (item.Description.Length > 250 ? item.Description.Substring(0, 250) + "..." : item.Description) : "")</p>
+                                    <div class="comment-footer mt-2">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <span class="badge bg-success-subtle text-success">Aktif</span>
+                                            <a href="/Article/ArticleDetail/@item.Slug" class="btn btn-sm btn-outline-primary">Makaleye Git</a>
+                                        </div>
+                                        <span class="text-muted ms-auto fw-normal fs-2 d-block mt-2 text-end">@item.CreatedDate.ToString("MMM dd, yyyy")</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

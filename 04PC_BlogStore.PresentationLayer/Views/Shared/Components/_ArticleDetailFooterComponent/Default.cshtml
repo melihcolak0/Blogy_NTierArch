@@ -1,0 +1,85 @@
+﻿<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="widget">
+                    <h3 class="mb-4">HAKKIMIZDA</h3>
+                    <p>
+                        Bu blog, dijital dünyanın hızla değişen ritmine ayak uydurmak isteyen herkes için bir durak. Yazılım, teknoloji, günlük yaşam ve ilham veren içeriklerle dolu bu alanda; öğrendiklerimi paylaşmayı, düşündürmeyi ve zaman zaman da gülümsetmeyi amaçlıyorum.
+                        Burada sadece bilgi değil, aynı zamanda samimiyet bulacaksınız. Keyifli okumalar!
+                    </p>
+                </div> <!-- /.widget -->
+                <div class="widget">
+                    <h3>SOSYAL</h3>
+                    <ul class="list-unstyled social">
+                        <li><a href="#"><span class="icon-instagram"></span></a></li>
+                        <li><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                        <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                        <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                    </ul>
+                </div> <!-- /.widget -->
+            </div> <!-- /.col-lg-4 -->
+            <div class="col-lg-4 ps-lg-5">
+                <div class="widget">
+                    <h3 class="mb-4">ŞİRKET</h3>
+                    <ul class="list-unstyled float-start links">
+                        <li><a href="#">Hakkımızda</a></li>
+                        <li><a href="#">Hizmetlerimiz</a></li>
+                        <li><a href="#">Vizyonumuz</a></li>
+                        <li><a href="#">Misyonumuz</a></li>
+                        <li><a href="#">Şartlarımız</a></li>
+                        <li><a href="#">Gizlilik</a></li>
+                    </ul>
+                    <ul class="list-unstyled float-start links">
+                        <li><a href="#">Partnerlerimiz</a></li>
+                        <li><a href="#">İş</a></li>
+                        <li><a href="#">Kariyer</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">SSS</a></li>
+                        <li><a href="#">Yaratıcı Ekibimiz</a></li>
+                    </ul>
+                </div> <!-- /.widget -->
+            </div> <!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <div class="widget">
+                    <h3 class="mb-4">Son Makaleler</h3>
+                    <div class="post-entry-footer">
+                        <ul>
+                            @foreach (var item in Model)
+                            {
+                                <li>
+                                    <a href="/Article/ArticleDetail/@item.Slug">
+                                        <img src="@item.ImageUrl" alt="Image placeholder" class="me-4 rounded">
+                                        <div class="text">
+                                            <h4>@item.Title</h4>
+                                            <div class="post-meta">
+                                                <span class="mr-2">@item.CreatedDate.ToString("dd MMM yy - HH:mm") </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div> <!-- /.widget -->
+            </div> <!-- /.col-lg-4 -->
+        </div> <!-- /.row -->
+
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <!--
+                    **==========
+                    NOTE:
+                    Please don't remove this copyright link unless you buy the license here https://untree.co/license/
+                    **==========
+                  -->
+
+                <p>
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>. Tüm hakları saklıdır. &mdash; <a href="https://untree.co">Untree.co</a> tarafından tasarlanmıştır. <a href="https://themewagon.com">ThemeWagon</a> tarafından dağıtılmıştır <!-- License information: https://untree.co/license/ -->
+                </p>
+            </div>
+        </div>
+    </div> <!-- /.container -->
+</footer> <!-- /.site-footer -->

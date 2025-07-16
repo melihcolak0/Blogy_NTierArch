@@ -1,0 +1,20 @@
+﻿@model List<Comment>
+
+<h3 class="mb-5 heading">Yorumlar (@Model.Count())</h3>
+<ul class="comment-list">
+    @foreach (var item in Model)
+    {
+        <li class="comment">
+            <div class="vcard">
+                <img src="@item.AppUser.ImageUrl" alt="Image placeholder">
+            </div>
+            <div class="comment-body">
+                <h3>@item.AppUser.Name @item.AppUser.Surname</h3>
+                <div class="meta">@item.CommentDate.ToString("dd MMM yyyy - HH:mm")</div>
+                <p>@item.CommentDetail</p>
+                <p><a href="#" class="reply rounded">Yanıtla</a></p>
+            </div>
+        </li>
+    }
+</ul>
+<!-- END comment-list -->
