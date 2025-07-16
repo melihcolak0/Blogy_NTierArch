@@ -52,7 +52,65 @@ Bu platformda siteye giriş yapan herkes yazılmış makaleleri yazarlara ve kat
 
 ### :triangular_flag_on_post: Ana Sayfa
 <div align="center">
-  <img src="https://github.com/melihcolak0/IdentityEmail/blob/1fe820118214e7c5a60536ff17c4121ca3d9493d/ss2/profile2.png" alt="image alt">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_Default_Index.png" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_Default_Authors.png" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_Default_Categories.png" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_Default_ArticlesByAuthor_5cab3c14-5e69-4874-909b-6e39060d7a6b.png" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_Default_ArticlesByCategory_1.png" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_Article_ArticleDetail_fffff.png" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-07-16%20162917.jpg" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-07-16%20162937.jpg" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-07-16%20202450.jpg" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-07-16%20202508.jpg" alt="image alt">
+</div>
+
+### :triangular_flag_on_post: Yazar Paneli
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_Author_Dashboard%20(1).png" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_Author_Dashboard%20(3).png" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_Author_GetProfile.png" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_Author_MyArticleList.png" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_Author_CreateArticle.png" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_Author_MyCommentsList.png" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_Author_MyCommentsList.png" alt="image alt">
+</div>
+
+### :triangular_flag_on_post: Diğer Sayfalar
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_LogIn_LogIn.png" alt="image alt">
+</div>
+<div align="center">
+  <img src="https://github.com/melihcolak0/Blogy_NTierArch/blob/cc24d8cb0ed94a7721aa53eeed5baaec97f5f057/ss/localhost_7056_register_index.png" alt="image alt">
 </div>
 
 
